@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    
+</head>
+<body>
+    <main>
+    <header>
+      <figure>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      </figure>
+      <h1>Criar conta</h1>
+      <p>Preencha os dados abaixo para se cadastrar</p>
+    </header>
+
+    <section>
+      <form method="POST">
+
+        <fieldset>
+          <label for="nome">Nome completo</label>
+          <input type="text" placeholder="Seu nome completo" name="nome" id="nome" required />
+        </fieldset>
+
+        <fieldset>
+          <label for="email">E-mail</label>
+          <input type="email" placeholder="seu@email.com" name="email" id="email" required />
+          <small id="emailErro">Por favor, insira um e-mail válido.</small>
+        </fieldset>
+
+        <fieldset>
+          <label for="senha">Senha</label>
+          <input type="password" placeholder="Crie uma senha forte" name="senha" id="senha" required />
+          <ul id="regras" aria-label="Requisitos da senha">
+            <li id="min">Mínimo de 8 caracteres</li>
+            <li id="maius">Pelo menos uma letra maiúscula</li>
+            <li id="minus">Pelo menos uma letra minúscula</li>
+            <li id="numero">Pelo menos um número</li>
+            <li id="simbolo">Pelo menos um símbolo (ex: @, #, !)</li>
+          </ul>
+        </fieldset>
+
+        <fieldset>
+          <label for="senhaRepet">Confirmar senha</label>
+          <input type="password" placeholder="Repita a senha criada" name="senhaRepet" id="senhaRepet" required />
+          <small id="senhaErro">As senhas não coincidem.</small>
+        </fieldset>
+
+        <button type="submit">Criar conta</button>
+
+      </form>
+    </section>
+
+    <footer>
+      <p>Já tem uma conta? <a href="#">Entrar</a></p>
+    </footer>
+  </main>
+</body>
+</html>
