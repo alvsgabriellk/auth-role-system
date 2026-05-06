@@ -1,5 +1,7 @@
 const form = document.querySelector("form");
 
+// nao posso me esquecer dos eventos de cada input
+
 const nome = document.getElementById("nome");
 const email = document.getElementById("email");
 const emailErro = document.getElementById("emailErro");
@@ -77,3 +79,11 @@ const validarTudo = () => {
 
     botao.disabled = !tudoOK;
 }
+
+// eventos dos inputs, cada input vai fazer realizar outro evento de validação de tudo
+nome.addEventListener("input", validarTudo);
+email.addEventListener("input", validarTudo);
+senha.addEventListener("input", validarTudo);
+senhaRepet.addEventListener("input", validarTudo);
+
+
