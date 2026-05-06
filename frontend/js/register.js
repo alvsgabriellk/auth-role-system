@@ -34,3 +34,12 @@ const validaEmail = (emailValue) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)
 };
 
+const validarTudo = () => {
+    const nomeValue = nome.value.trim();
+    const emailValue = email.value.trim();
+    const emailErroValue = emailErro.value.trim();
+    const senhaValue = senha.value.trim();
+    const senhaErroValue = senhaErro.value.trim();
+    const senhaRepetValue = senhaRepet.value.trim();
+    
+}
