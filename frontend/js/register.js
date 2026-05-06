@@ -55,4 +55,13 @@ const validarTudo = () => {
     // validar senha
     const senhaOK = Object.values(validacoes).every(v => v);
 
+    // validar email
+    const emailOK = validaEmail(emailValue);
+    if (emailValue === "") {
+        emailErro.style.display = "none";
+    } else {
+        emailErro.style.display = emailOK ? "none" : "block";
+    }
+
+    
 }
