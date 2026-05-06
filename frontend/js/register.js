@@ -52,4 +52,7 @@ const validarTudo = () => {
         }
     }
     
+    // validar senha
+    const senhaOK = Object.values(validacoes).every(v => v);
+
 }
