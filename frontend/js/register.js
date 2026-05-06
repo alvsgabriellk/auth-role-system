@@ -30,3 +30,7 @@ const validarSenha = (senhaValue => {
     };
 });
 
+const validaEmail = (emailValue) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)
+};
+
