@@ -10,7 +10,7 @@ const senhaRepet = document.getElementById("senhaRepet");
 const senhaErro = document.getElementById("senhaErro");
 
 
-const botao = document.querySelector("button=[type='submit']");
+const botao = document.querySelector("button[type='submit']");
 
 const regras = {
     min: document.getElementById("min"),
@@ -78,12 +78,20 @@ const validarTudo = () => {
     const tudoOK = senhaOK && senhaIgual && emailOK && nomeOK;
 
     botao.disabled = !tudoOK;
-}
+};
 
 // eventos dos inputs, cada input vai fazer realizar outro evento de validação de tudo
 nome.addEventListener("input", validarTudo);
 email.addEventListener("input", validarTudo);
 senha.addEventListener("input", validarTudo);
 senhaRepet.addEventListener("input", validarTudo);
+
+form.addEventListener("form", (e) => {
+    validarTudo(); // ultima chamada pra validar tudo antes do submit
+
+    if (botao.disabled) {
+        e.preventDefault(); // impede comportmnt padrão
+    }
+});
 
 
