@@ -24,7 +24,7 @@ botao.disabled = true;
 
 const validarSenha = (senhaValue => {
     return {
-        min: senhaValue >= 8,
+        min: senhaValue.length >= 8,
         maius: /[A-Z]/.test(senhaValue),
         minus: /[a-z]/.test(senhaValue),
         numero: /[0-9]/.test(senhaValue),
@@ -39,18 +39,16 @@ const validaEmail = (emailValue) => {
 const validarTudo = () => {
     const nomeValue = nome.value.trim();
     const emailValue = email.value.trim();
-    const emailErroValue = emailErro.value.trim();
     const senhaValue = senha.value.trim();
-    const senhaErroValue = senhaErro.value.trim();
     const senhaRepetValue = senhaRepet.value.trim();
     
     // todas as regras com true ou false
     const validacoes = validarSenha(senhaValue);
     for (let regra in validacoes) {
         if (validacoes[regra]) {
-            regras[regra].class.List.add("ok");
+            regras[regra].classList.add("ok");
         } else {
-            regras[regra].class.List.remove("ok");
+            regras[regra].classList.remove("ok");
         }
     }
     
@@ -86,7 +84,7 @@ email.addEventListener("input", validarTudo);
 senha.addEventListener("input", validarTudo);
 senhaRepet.addEventListener("input", validarTudo);
 
-form.addEventListener("form", (e) => {
+form.addEventListener("submit", (e) => {
     validarTudo(); // ultima chamada pra validar tudo antes do submit
 
     if (botao.disabled) {
