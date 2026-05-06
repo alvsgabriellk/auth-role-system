@@ -14,7 +14,7 @@ app.secret_key = os.getenv("SECRET_KEY_API")
 ENV = os.getenv("ENV", "local") # se nao achar chave env, aceita default(local)
 
 if ENV == "production": # no servidor de deploy terá la ENV=production
-    DATABASE_URL = os.getenv("DATABASE_URL")
+    DATABASE_URL = os.getenv("DATABASE_URL") # url do banco vai ta na env da plataforma 
     app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
     app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
         "connect_args": {"sslmode": "require"}
