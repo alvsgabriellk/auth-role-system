@@ -1,33 +1,28 @@
-from flask import Flask, request, jsonify, redirect, url_for
+from flask import Flask
 from flask_cors import CORS
 from database import db
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
+from config import DesenvolvimentoConfig, ProducaoConfig
+from routes import register_bp
 
 app = Flask(__name__)
 
 ENV = os.getenv("ENV", "local") # lá vai ta production, e aqui local
 
 if ENV == "production":
-    WEB_URL = os.getenv("WEB_URL")
-    CORS(app, origins=[WEB_URL])
+    app.config.from_object(ProducaoConfig) # carregando dados de producao
 else:
-    CORS(app, origins=["http://127.0.0.1:5500"])  # faz o back aceitar o front e o front acessar a api
+    app.config.from_object(DesenvolvimentoConfig) # carregando dados de desenvolvimento
 
-app.secret_key = os.getenv("SECRET_KEY_API")
+CORS(app, origins=app.config["CORS_ORIGINS"]) # faz o back aceitar o front e o front acessar a api
 
-if ENV == "production": # no servidor de deploy terá la ENV=production
-    DATABASE_URL = os.getenv("DATABASE_URL") # url do banco vai ta na env da plataforma 
-    app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
-    app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
-        "connect_args": {"sslmode": "require"}
-    }
-else:
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///banco.db"
 
 db.init_app(app)
 
+app.register_blueprint(register_bp, url_prefix="/register")
+
+with app.app_context():
+    db.create_all()
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=app.config.get("DEBUG"))
