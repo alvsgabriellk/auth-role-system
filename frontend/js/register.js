@@ -70,4 +70,10 @@ const validarTudo = () => {
     } else { // se a senha nao for igual, mostre erro (block)
         senhaErro.style.display = senhaIgual ? "none" : "block";
     }
+
+    const nomeOK = nomeValue !== "";
+
+    const tudoOK = senhaOK && senhaIgual && emailOK && nomeOK;
+
+    botao.disabled = !tudoOK;
 }
