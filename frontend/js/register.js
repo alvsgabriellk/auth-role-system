@@ -63,5 +63,11 @@ const validarTudo = () => {
         emailErro.style.display = emailOK ? "none" : "block";
     }
 
-    
+    // validar confirmação de senha
+    const senhaIgual = senhaValue === senhaRepetValue && senhaRepetValue !== "";
+    if (senhaRepetValue === "") {
+        senhaErro.style.display = "none";
+    } else { // se a senha nao for igual, mostre erro (block)
+        senhaErro.style.display = senhaIgual ? "none" : "block";
+    }
 }
