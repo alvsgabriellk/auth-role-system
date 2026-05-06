@@ -1,0 +1,1 @@
+from .register_controller import registrando_usuario
