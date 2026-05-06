@@ -18,3 +18,15 @@ const regras = {
     simbolo: document.getElementById("simbolo")
 };
 
+botao.disabled = true;
+
+const validarSenha = (senhaValue => {
+    return {
+        min: senhaValue >= 8,
+        maius: /[A-Z]/.test(senhaValue),
+        minus: /[a-z]/.test(senhaValue),
+        numero: /[0-9]/.test(senhaValue),
+        simbolo: /[^A-Za-z0-9]/.test(senhaValue)
+    };
+});
+
