@@ -42,4 +42,14 @@ const validarTudo = () => {
     const senhaErroValue = senhaErro.value.trim();
     const senhaRepetValue = senhaRepet.value.trim();
     
+    // todas as regras com true ou false
+    const validacoes = validarSenha(senhaValue);
+    for (let regra in validacoes) {
+        if (validacoes[regra]) {
+            regras[regra].class.List.add("ok");
+        } else {
+            regras[regra].class.List.remove("ok");
+        }
+    }
+    
 }
