@@ -1,5 +1,7 @@
 from flask import Blueprint, request, jsonify
 from controllers import registrando_usuario
+# Responsabilidades:
+# request, response, jsonify, status code
 
 
 register_bp = Blueprint("register", __name__)
