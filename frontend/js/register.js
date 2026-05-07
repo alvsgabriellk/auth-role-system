@@ -78,22 +78,21 @@ const validarTudo = () => {
     botao.disabled = !tudoOK;
 };
 
+
 // eventos dos inputs, cada input vai fazer realizar outro evento de validação de tudo
 nome.addEventListener("input", validarTudo);
 email.addEventListener("input", validarTudo);
 senha.addEventListener("input", validarTudo);
 senhaRepet.addEventListener("input", validarTudo);
 
+
 form.addEventListener("submit", async (e) => {
     e.preventDefault(); // impede comportmnt padrão
     validarTudo(); // ultima chamada pra validar tudo antes do submit
-    const nome = document.getElementById("nome").value;
-    const email = document.getElementById("email").value;
-    const senha = document.getElementById("senha").value;
 
     if (botao.disabled) {
-        return
-    }
+            return
+        }
 
     try { // momento que sai do navegador e vai pra a api
         const res = await fetch("http://127.0.0.1:5000/register/sign-up", { // fetch = promisse 
@@ -102,17 +101,24 @@ form.addEventListener("submit", async (e) => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                nome,
-                email,
-                senha,
+                nome: nome.value,
+                email: email.value,
+                senha: senha.value,
             })
         });
 
         const dados = await res.json(); // se retornar uma resposta(resolve)
 
-        document.getElementById("respostaServidor").innerHTML = dados.msg || dados.erro;
+        if (!res.ok) {
+            return mostrarAlerta("danger", dados.erro);
+        }
+
+        mostrarAlerta("success", dados.msg)
+        form.reset();
+        validarTudo();
+
     } catch (erro) { // se retornar um erro (reject)
-        document.getElementById("respostaServidor").innerHTML = erro
+        mostrarAlerta("warning", "Erro interno no servidor!")
     }
 });
 
