@@ -84,12 +84,38 @@ email.addEventListener("input", validarTudo);
 senha.addEventListener("input", validarTudo);
 senhaRepet.addEventListener("input", validarTudo);
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
+    e.preventDefault(); // impede comportmnt padrão
     validarTudo(); // ultima chamada pra validar tudo antes do submit
+    const nome = document.getElementById("nome").value;
+    const email = document.getElementById("email").value;
+    const senha = document.getElementById("senha").value;
 
     if (botao.disabled) {
-        e.preventDefault(); // impede comportmnt padrão
+        return
+    }
+
+    try { // momento que sai do navegador e vai pra a api
+        const res = await fetch("http://127.0.0.1:5000/register/sign-up", { // fetch = promisse 
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nome,
+                email,
+                senha,
+            })
+        });
+
+        const dados = await res.json(); // se retornar uma resposta(resolve)
+
+        document.getElementById("respostaServidor").innerHTML = dados.msg || dados.erro;
+    } catch (erro) { // se retornar um erro (reject)
+        document.getElementById("respostaServidor").innerHTML = erro
     }
 });
+
+
 
 
