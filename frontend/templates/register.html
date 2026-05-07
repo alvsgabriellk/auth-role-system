@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -156,10 +156,16 @@
 
     /* Parágrafo de erro/validação (ficará visível via JS) */
     small {
-      font-size: 0.8rem;
+      font-size: 1rem;
       color: #c03a2b;
       font-weight: 400;
       display: none; /* JS controlará: element.style.display = 'block' */
+    }
+
+    #respostaServidor {
+      font-size: 1rem;
+      color: #c03a2b;
+      font-weight: 400;
     }
 
     /* Regras de senha */
@@ -318,6 +324,7 @@
           <input type="password" placeholder="Repita a senha criada" name="senhaRepet" id="senhaRepet" required />
           <small id="senhaErro">As senhas não coincidem.</small>
         </fieldset>
+        <p id="respostaServidor"></p>
 
         <button type="submit">Criar conta</button>
 
