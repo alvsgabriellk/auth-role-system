@@ -1,3 +1,8 @@
+// CONTROLADOR DA PÁGINA
+
+import {validarSenha, validarEmail, validarNome} from "../validators/registerValidator.js";
+import { cadastrarUsuario } from "../services/authService.js";
+import {mostrarAlerta} from "../ui/alerts.js";
 
 const form = document.querySelector("form");
 
@@ -82,7 +87,33 @@ form.addEventListener("submit", async (e) => {
         return
     }
 
-    
+    try {
+        
+        const resultado = await cadastrarUsuario({
+            nome: nome.value,
+            email: email.value,
+            senha: senha.value
+        });
+
+        // erro conhecido da API
+        if (!resultado.ok) {
+
+            return mostrarAlerta(
+                "danger",
+                resultado.dados.erro
+            );
+
+        }
+
+        mostrarAlerta("success", resultado.dados.msg);
+
+        form.reset();
+
+        validarTudo();
+
+    } catch (erro) {
+        mostrarAlerta("warning", "Erro interno no servidor!")
+    }
 
 });
 
