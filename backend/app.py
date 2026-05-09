@@ -3,7 +3,7 @@ from flask_cors import CORS
 from database import db
 import os
 from config import DesenvolvimentoConfig, ProducaoConfig
-from routes import register_bp
+from routes import auth_bp
 
 app = Flask(__name__)
 
@@ -19,7 +19,7 @@ CORS(app, origins=app.config["CORS_ORIGINS"]) # faz o back aceitar o front e o f
 
 db.init_app(app)
 
-app.register_blueprint(register_bp, url_prefix="/register")
+app.register_blueprint(auth_bp, url_prefix="/auth")
 
 with app.app_context():
     db.create_all()
