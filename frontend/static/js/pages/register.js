@@ -1,8 +1,8 @@
 // CONTROLADOR DA PÁGINA
 
-import {validarSenha, validarEmail, validarNome} from "../validators/registerValidator.js";
+import { validarSenha, validarEmail, validarNome } from "../validators/registerValidator.js";
 import { cadastrarUsuario } from "../services/authService.js";
-import {mostrarAlerta} from "../ui/alerts.js";
+import { mostrarAlerta } from "../ui/alerts.js";
 
 const form = document.querySelector("form");
 
