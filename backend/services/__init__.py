@@ -1,1 +1,2 @@
-from .register_service import usuario_criado
+from .register_service import registrar_usuario
+from .login_service import autenticar_usuario
