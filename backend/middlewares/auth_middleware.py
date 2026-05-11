@@ -21,3 +21,17 @@ def token_requerido(f):
         return f(*args, **kwargs)
     return decorated
 
+def admin_requerido(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        auth_header = request.headers.get("Authorization")
+        
+        token = auth_header.split(" ")[1]
+
+        payload = verificar_token(token)
+
+        if payload.get("role") != "admin": # melhor assim que volta none doq ["role"]
+            return {"error": "Acesso negado"}, 403
+        
+        return f(*args, **kwargs)
+    return decorated
