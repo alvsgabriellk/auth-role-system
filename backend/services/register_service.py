@@ -5,7 +5,7 @@ from database import db, Usuario
 # Responsabilidades:
 # lógica, banco, validação
 
-def usuario_criado(nome, email, senha):
+def registrar_usuario(nome, email, senha):
     senha_hash = gerar_senha_hash(senha)
 
     usuario = Usuario(
