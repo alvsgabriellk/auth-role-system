@@ -1,1 +1,2 @@
-from .register_controller import registrando_usuario
+from .register_controller import register_controller
+from .login_controller import login_controller
