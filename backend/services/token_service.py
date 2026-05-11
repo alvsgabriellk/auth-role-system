@@ -17,3 +17,18 @@ def gerar_token(usuario):
 
     return token
 
+def verificar_token(token):
+    try:
+        payload = jwt.decode(
+            token,
+            current_app.config["SECRET_KEY_API"],
+            algorithms=["HS256"]
+        )
+
+        return payload # se o token for valido, retorna dados do usuario com as permissoes
+    
+    except jwt.ExpiredSignatureError:
+        return None
+    
+    except jwt.InvalidTokenError:
+        return None
