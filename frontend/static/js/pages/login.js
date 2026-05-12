@@ -14,3 +14,29 @@ const botao = document.querySelector("button[type='submit']");
 
 botao.disabled = true;
 
+function validarTudoOK () {
+    const emailValue = email.value.trim();
+    const senhaValue = senha.value.trim();
+
+    const emailOK = validarEmail(emailValue);
+    if (emailValue === "") {
+        emailErro.style.display = "none";
+    } else {
+        emailErro.style.display = emailOK ? "none" : "block";
+    }
+
+    const senhaOK = validarSenha(senhaValue);
+    if (senhaValue === "") {
+        senhaErro.style.display = "none";
+    } else {
+        senhaErro.style.display = senhaOK ? "none" : "block";
+    }
+
+    const tudoOK = emailOK && senhaOK;
+
+    botao.disabled = !tudoOK;
+}
+
+email.addEventListener("input", validarTudoOK);
+senha.addEventListener("input", validarTudoOK);
+
