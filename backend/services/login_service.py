@@ -4,7 +4,6 @@ from database import db, Usuario
 from sqlalchemy import select
 
 def autenticar_usuario(email, senha):
-    senha_hash = verificar_senha_hash(senha)
 
     usuario = db.session.execute(
         select(Usuario).where(
@@ -13,10 +12,10 @@ def autenticar_usuario(email, senha):
     ).scalar_one_or_none()
 
     if not usuario:
-        return {"error": "Usuário não encontrado"}, 404
+        return {"error": "Usuário não encontrado"}, 401
     
-    if not verificar_senha_hash(senha_hash, usuario.senha):
-        return {"error": "Senha incorreta"}, 400
+    if not verificar_senha_hash(usuario.senha, senha):
+        return {"error": "Senha incorreta"}, 401
     
     token = gerar_token(usuario)
     
