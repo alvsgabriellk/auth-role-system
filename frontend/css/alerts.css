@@ -1,0 +1,59 @@
+#alerta {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+
+    z-index: 9999;
+
+    min-width: 320px;
+    max-width: 420px;
+
+    padding: 1rem 1.2rem;
+
+    border: none;
+    border-radius: 14px;
+
+    box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.12);
+
+    opacity: 1;
+
+    animation: aparecer 0.3s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#alerta svg {
+    width: 22px;
+    height: 22px;
+}
+
+#mensagemAlerta {
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.alert-success {
+    background: #e8fff1;
+    color: #0f5132;
+}
+
+.alert-danger {
+    background: #ffe9e9;
+    color: #842029;
+}
+
+.alert-warning {
+    background: #fff8e1;
+    color: #664d03;
+}
