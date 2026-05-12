@@ -40,3 +40,33 @@ function validarTudoOK () {
 email.addEventListener("input", validarTudoOK);
 senha.addEventListener("input", validarTudoOK);
 
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    validarTudoOK();
+
+    if (botao.disabled) {
+        return
+    }
+
+    try {
+        const resultado = await autenticarUsuario({
+            email: email.value,
+            senha: senha.value
+        });
+
+        if (!resultado.sucesso) {
+            senhaErro.style.display = "block";
+
+            return;
+        }
+        
+        senhaErro.style.display = "none";
+
+        form.reset();
+
+        validarTudoOK();
+
+    } catch(error) {
+        mostrarAlerta("warning", "Erro interno no servidor!");
+    }
+});
