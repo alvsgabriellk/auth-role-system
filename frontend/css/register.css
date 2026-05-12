@@ -1,0 +1,69 @@
+ /* Regras de senha */
+:root {
+      --azul-escuro:  #0f2a4a;
+      --azul-medio:   #1a4a7a;
+      --azul-vivo:    #1e6fc4;
+      --azul-claro:   #3a8fd4;
+      --azul-suave:   #d6e8f7;
+
+      --cinza-escuro: #2e3a4a;
+      --cinza-medio:  #6b7a8d;
+      --cinza-claro:  #b0bec5;
+      --cinza-bg:     #f0f4f8;
+
+      --branco:       #ffffff;
+      --erro:         #c03a2b9a;
+      --ok:           #16a34ab0;
+
+      --fonte-display: 'Sora', sans-serif;
+      --fonte-corpo:   'DM Sans', sans-serif;
+
+      --raio:   12px;
+      --sombra: 0 8px 32px rgba(15, 42, 74, 0.12);
+    }
+
+    #regras {
+      list-style: none;
+      padding: 0.65rem 0.8rem;
+      background: var(--azul-suave);
+      border-left: 3px solid var(--azul-vivo);
+      border-radius: 0 var(--raio) var(--raio) 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    #regras li {
+      font-size: 0.82rem;
+      color: var(--cinza-medio);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.25s ease;
+    }
+
+    #regras li::before {
+        content: "✖";
+        font-size: 0.7rem;
+        color: white;
+        background: var(--erro);
+        width: 16px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.25s ease;
+    }
+
+    #regras li.ok {
+        color: var(--ok);
+    }
+
+    #regras li.ok::before {
+        content: "✔";
+        background: var(--ok);
+        transform: scale(1.15);
+    }
+
+    
