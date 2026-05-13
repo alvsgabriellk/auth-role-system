@@ -19,7 +19,7 @@ CORS(app, origins=app.config["CORS_ORIGINS"]) # faz o back aceitar o front e o f
 
 db.init_app(app)
 
-app.register_blueprint(auth_bp, url_prefix="/auth")
+app.register_blueprint(auth_bp)
 
 with app.app_context():
     db.create_all()
