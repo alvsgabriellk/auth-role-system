@@ -62,9 +62,9 @@ form.addEventListener("submit", async (e) => {
         
         senhaErro.style.display = "none";
 
-        form.reset();
-
-        validarTudoOK();
+        setTimeout(() => {
+            window.location.href = "/templates/register.html";
+        }, 1950);
 
     } catch(error) {
         mostrarAlerta("warning", "Erro interno no servidor!");

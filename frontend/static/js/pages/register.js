@@ -106,10 +106,9 @@ form.addEventListener("submit", async (e) => {
         }
 
         mostrarAlerta("success", resultado.dados.msg);
-
-        form.reset();
-
-        validarTudo();
+        setTimeout(() => {
+            window.location.href = "/templates/login.html";
+        }, 1950);
 
     } catch (erro) {
         mostrarAlerta("warning", "Erro interno no servidor!")
