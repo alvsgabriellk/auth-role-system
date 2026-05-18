@@ -12,10 +12,13 @@ def autenticar_usuario(email, senha):
     ).scalar_one_or_none()
 
     if not usuario:
-        return {"error": "Usuário não encontrado"}, 401
+        return {"error": "Email ou Senha incorretos."}, 400
     
     if not verificar_senha_hash(usuario.senha, senha):
-        return {"error": "Senha incorreta"}, 401
+        return {"error": "Email ou Senha incorretos."}, 400
+    
+    if usuario.verificado == False:
+        return {"verificacao": "Confirme seu email antes de fazer login"}, 401
     
     token = gerar_token(usuario)
     
