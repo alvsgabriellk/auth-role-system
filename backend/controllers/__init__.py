@@ -1,2 +1,3 @@
 from .register_controller import register_controller
 from .login_controller import login_controller
+from .email_controller import email_controller
