@@ -12,3 +12,4 @@ class Usuario(db.Model):
     data_ultima_atualizacao = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     role = db.Column(db.Enum("user", "admin"), default="user", nullable=False) 
     ativo = db.Column(db.Boolean, default=True)
+    verificado = db.Column(db.Boolean, default=False)
