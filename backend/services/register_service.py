@@ -2,10 +2,15 @@ from utils import gerar_senha_hash
 from sqlalchemy.exc import IntegrityError
 from database import db, Usuario
 import requests
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # Responsabilidades:
 # lógica, banco, validação
 
+ResendKey = os.getenv("RESEND_KEY")
 
 
 def enviar_email(email, link):
@@ -14,7 +19,7 @@ def enviar_email(email, link):
         "https://api.resend.com/emails",
 
         headers={
-            "Authorization": f"Bearer {RESEND_KEY}"
+            "Authorization": f"Bearer {ResendKey}"
         },
 
         json={
