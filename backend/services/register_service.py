@@ -1,6 +1,36 @@
 from utils import gerar_senha_hash
 from sqlalchemy.exc import IntegrityError
 from database import db, Usuario
+import requests
+
+# Responsabilidades:
+# lógica, banco, validação
+
+
+
+def enviar_email(email, link):
+    
+    response = requests.post(
+        "https://api.resend.com/emails",
+
+        headers={
+            "Authorization": f"Bearer {RESEND_KEY}"
+        },
+
+        json={
+            "from": "onboarding@resend.dev",
+            "to": email,
+            "subject": "Confirme a sua conta",
+
+            "html": f"""
+                <h1> Conta criada! </h1>
+                <p> Verifique se foi você que se cadastrou </p>
+                <a href="{link}">
+                    Confirmar conta
+                </a>
+            """
+        }
+    )
 
 # Responsabilidades:
 # lógica, banco, validação
