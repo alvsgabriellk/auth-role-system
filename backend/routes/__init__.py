@@ -4,5 +4,6 @@ auth_bp = Blueprint("auth", __name__, url_prefix="/auth")
 
 from .auth import ( 
     login_routes,
-    register_routes
+    register_routes,
+    email_routes
 )
