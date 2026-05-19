@@ -40,28 +40,32 @@
         </div>
       </div>
       <div class="divider"></div>
-      <form method="POST">
+      <form name="novoProduto" id="novoProduto">
         <fieldset>
-          <label for="nome">Nome do produto</label>
-          <input type="text" placeholder="Ex: Camiseta Premium" name="nome" id="nome" required />
+          <label for="NomeNovoProduto">Nome do produto</label>
+          <input type="text" placeholder="Ex: Camiseta Premium" name="NomeNovoProduto" id="NomeNovoProduto" required />
+          <small id="NovoProdutoErro">Digite um nome válido.</small>
         </fieldset>
         <fieldset>
-          <label for="descricao">Descrição</label>
-          <textarea placeholder="Descreva o produto brevemente…" name="descricao" id="descricao"></textarea>
+          <label for="NovaDescricao">Descrição</label>
+          <textarea placeholder="Descreva o produto brevemente…" name="NovaDescricao" id="NovaDescricao"></textarea>
+          <small id="NovaDescricaoErro">Descrição muito curta.</small>
         </fieldset>
         <div class="row-2">
           <fieldset>
-            <label for="preco">Preço (R$)</label>
-            <input type="number" placeholder="0,00" step="0.01" min="0" name="preco" id="preco" required />
+            <label for="NovoPreco">Preço (R$)</label>
+            <input type="number" placeholder="0,00" step="0.01" min="0" name="NovoPreco" id="NovoPreco" required />
+            <small id="NovoPrecoErro">Digite uma valor válido.</small>
           </fieldset>
           <fieldset>
-            <label for="estoque">Estoque</label>
-            <input type="number" placeholder="0" min="0" name="estoque" id="estoque" required />
+            <label for="NovoEstoque">Estoque</label>
+            <input type="number" placeholder="0" min="0" name="NovoEstoque" id="NovoEstoque" required />
+            <small id="NovoEstoqueErro">Digite um valor válido.</small>
           </fieldset>
         </div>
         <fieldset>
-          <label for="categoria">Categoria</label>
-          <select name="categoria" id="categoria" required>
+          <label for="NovaCategoria">Categoria</label>
+          <select name="NovaCategoria" id="NovaCategoria" required>
             <option value="" disabled selected>Selecione uma categoria</option>
             <option>Vestuário</option>
             <option>Eletrônicos</option>
@@ -69,8 +73,9 @@
             <option>Alimentos</option>
             <option>Outros</option>
           </select>
+          <small id="NovaCategoriaErro">Selecione uma categoria.</small>
         </fieldset>
-        <button type="submit" class="btn btn-verde">
+        <button type="submit" class="btn btn-verde" name="ButtonNovo" id="ButtonNovo">
           <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           Adicionar produto
         </button>
