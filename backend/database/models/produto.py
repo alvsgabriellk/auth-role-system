@@ -12,5 +12,5 @@ class Produto(db.Model):
     categoria = db.Column(db.String(20), nullable=False)
     data_criado = db.Column(db.DateTime, default=datetime.utcnow)
     data_ultima_atualizacao = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
-    status = db.Column(db.Boolean, default=None)
+    status = db.Column(db.String(20), nullable=False)
     
