@@ -42,26 +42,26 @@
       <div class="divider"></div>
       <form method="POST">
         <fieldset>
-          <label>Nome do produto</label>
-          <input type="text" placeholder="Ex: Camiseta Premium" />
+          <label for="nome">Nome do produto</label>
+          <input type="text" placeholder="Ex: Camiseta Premium" name="nome" id="nome" required />
         </fieldset>
         <fieldset>
-          <label>Descrição</label>
-          <textarea placeholder="Descreva o produto brevemente…"></textarea>
+          <label for="descricao">Descrição</label>
+          <textarea placeholder="Descreva o produto brevemente…" name="descricao" id="descricao"></textarea>
         </fieldset>
         <div class="row-2">
           <fieldset>
-            <label>Preço (R$)</label>
-            <input type="number" placeholder="0,00" step="0.01" min="0" />
+            <label for="preco">Preço (R$)</label>
+            <input type="number" placeholder="0,00" step="0.01" min="0" name="preco" id="preco" required />
           </fieldset>
           <fieldset>
-            <label>Estoque</label>
-            <input type="number" placeholder="0" min="0" />
+            <label for="estoque">Estoque</label>
+            <input type="number" placeholder="0" min="0" name="estoque" id="estoque" required />
           </fieldset>
         </div>
         <fieldset>
-          <label>Categoria</label>
-          <select>
+          <label for="categoria">Categoria</label>
+          <select name="categoria" id="categoria" required>
             <option value="" disabled selected>Selecione uma categoria</option>
             <option>Vestuário</option>
             <option>Eletrônicos</option>
@@ -94,30 +94,30 @@
       <div class="divider"></div>
       <form method="POST">
         <fieldset>
-          <label>ID do produto</label>
-          <input type="text" placeholder="Ex: 00123" />
+          <label for="id_produto">ID do produto</label>
+          <input type="text" placeholder="Ex: 3" name="id_produto" id="id_produto" required/>
         </fieldset>
         <fieldset>
-          <label>Novo nome</label>
-          <input type="text" placeholder="Nome atualizado" />
+          <label for="novo_nome">Novo nome</label>
+          <input type="text" placeholder="Nome atualizado" name="novo_nome" id="novo_nome"/>
         </fieldset>
         <fieldset>
-          <label>Nova descrição</label>
-          <textarea placeholder="Descrição atualizada…"></textarea>
+          <label for="nova_descricao">Nova descrição</label>
+          <textarea placeholder="Descrição atualizada…" name="nova_descricao" id="nova_descricao"></textarea>
         </fieldset>
         <div class="row-2">
           <fieldset>
-            <label>Novo preço (R$)</label>
-            <input type="number" placeholder="0,00" step="0.01" min="0" />
+            <label for="novo_preco">Novo preço (R$)</label>
+            <input type="number" placeholder="0,00" step="0.01" min="0" name="novo_preco" id="novo_preco" />
           </fieldset>
           <fieldset>
-            <label>Novo estoque</label>
-            <input type="number" placeholder="0" min="0" />
+            <label for="novo_estoque">Novo estoque</label>
+            <input type="number" placeholder="0" min="0" name="novo_estoque"  id="novo_estoque"/>
           </fieldset>
         </div>
         <fieldset>
-          <label>Categoria</label>
-          <select>
+          <label for="nova_categoria">Categoria</label>
+          <select name="nova_categoria" id="nova_categoria">
             <option value="" disabled selected>Selecione uma categoria</option>
             <option>Vestuário</option>
             <option>Eletrônicos</option>
@@ -147,9 +147,9 @@
       <div class="divider"></div>
       <form method="GET">
         <fieldset>
-          <label>ID ou nome do produto</label>
+          <label for="buscar_produto">ID ou nome do produto</label>
           <div class="busca-row">
-            <input type="search" placeholder="Ex: 00123 ou Camiseta…" />
+            <input type="search" placeholder="Ex: 3 ou Camiseta…" name="buscar_produto" id="buscar_produto" required/>
             <button type="submit" class="btn btn-azul btn-busca">
               <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
               Buscar
@@ -190,12 +190,12 @@
       </div>
       <form method="POST">
         <fieldset>
-          <label>ID do produto</label>
-          <input type="text" placeholder="Ex: 00123" />
+          <label for="id_produto">ID do produto</label>
+          <input type="text" placeholder="Ex: 3" name="id_produto" id="id_produto" required/>
         </fieldset>
         <fieldset>
-          <label>Confirmação — repita o ID</label>
-          <input type="text" placeholder="Repita o ID para confirmar" />
+          <label for="id_produto_confirmar">Confirmação — repita o ID</label>
+          <input type="text" placeholder="Repita o ID para confirmar" name="id_produto_confirmar" id="id_produto_confirmar" required/>
         </fieldset>
         <button type="submit" class="btn btn-vermelho">
           <svg viewBox="0 0 24 24">
