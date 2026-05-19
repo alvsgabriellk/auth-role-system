@@ -279,6 +279,11 @@
 
     .btn:hover  { opacity: 0.88; transform: translateY(-1px); }
     .btn:active { transform: scale(0.98); }
+    .btn:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        box-shadow: none;
+    }
 
     .btn-azul {
       background: linear-gradient(135deg, var(--azul-vivo), var(--azul-escuro));
@@ -425,6 +430,13 @@
     }
 
     tbody td:last-child { text-align: center; }
+
+    small {
+      font-size: 1rem;
+      color: #c03a2b9a;
+      font-weight: 400;
+      display: none; /* JS controlará: element.style.display = 'block' */
+    }
 
     .td-nome  { font-weight: 500; color: var(--azul-escuro); }
     .td-preco { font-family: var(--fonte-display); font-weight: 600; color: var(--verde); }
