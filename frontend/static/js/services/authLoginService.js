@@ -11,24 +11,26 @@ export async function autenticarUsuario(usuario) {
 
     const dados = await res.json();
 
-    if (res.status == 401) {
+    if (dados.verificacao) {
         return {
-            sucesso: false
+            sucesso: false,
+            verificacaoMsg: dados.verificacao
+        };
+    } else if (!res.ok) {
+        return {
+            sucesso: false,
+            msg: dados.error
         };
     }
 
-    if (!res.ok) {
-        throw new Error("Erro interno no servidor!");
-    }
-
-    localStorage.setItem("token", dados.token);
+    localStorage.setItem("token", dados.token)
 
     return {
         sucesso: true,
         dados
     };
+
     } catch (error) {
         throw new Error("Erro interno no servidor!");
-
     }
 }
