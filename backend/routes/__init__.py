@@ -6,5 +6,9 @@ crud_bp = Blueprint("crud", __name__, url_prefix="/crud")
 from .auth import ( 
     login_routes,
     register_routes,
-    email_routes
+    email_routes,
+)
+
+from .crud import (
+    novo_routes
 )
