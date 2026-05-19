@@ -1,4 +1,6 @@
 import { ValidarNome, ValidarDescricao, ValidarPreco, ValidarEstoque, ValidarCategoria } from "../../validators/crudValidator.js";
+import { NovoProduto } from "../../services/crud/novoService.js";
+import { mostrarAlerta } from "../../ui/alerts.js";
 
 const NovoForm = document.getElementById("novoProduto");
 
@@ -68,3 +70,30 @@ NovaDescricao.addEventListener("input", validarTudo);
 NovoPreco.addEventListener("input", validarTudo);
 NovoEstoque.addEventListener("input", validarTudo);
 NovaCategoria.addEventListener("input", validarTudo);
+
+NovoForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    validarTudo();
+
+    try {
+        const resultado = await NovoProduto({
+            nome: NomeNovoProduto.value,
+            descricao: NovaDescricao.value,
+            preco: NovoPreco.value,
+            estoque: NovoEstoque.value,
+            categoria: NovaCategoria.value
+        });
+
+        if (!resultado.ok) {
+            mostrarAlerta("danger", resultado.msg);
+        }
+
+        mostrarAlerta("success", resultado.dados.msg);
+
+    } catch (error) {
+        mostrarAlerta("warning", "Erro interno no servidor!");
+    }
+
+    NovoForm.reset();
+
+});
