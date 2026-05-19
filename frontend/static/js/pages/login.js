@@ -42,7 +42,6 @@ senha.addEventListener("input", validarTudoOK);
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    validarTudoOK();
 
     if (botao.disabled) {
         return
@@ -54,19 +53,19 @@ form.addEventListener("submit", async (e) => {
             senha: senha.value
         });
 
-        if (!resultado.sucesso) {
-            senhaErro.style.display = "block";
+        if (resultado.verificacaoMsg) {
+            mostrarAlerta("danger", resultado.verificacaoMsg);
+        }
 
+        if (resultado.msg) {
+            senhaErro.style.display = "block";
+            senhaErro.innerText = resultado.msg
             return;
         }
-        
-        senhaErro.style.display = "none";
-
-        setTimeout(() => {
-            window.location.href = "/templates/register.html";
-        }, 1950);
 
     } catch(error) {
         mostrarAlerta("warning", "Erro interno no servidor!");
     }
+
+    form.reset();
 });
