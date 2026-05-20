@@ -1,6 +1,10 @@
 from functools import wraps
 from flask import request, jsonify
 from services.token_service import verificar_token
+import jwt
+
+# TRATAMENTO DOS ERROS
+# É ONDE OS ERROS SERÃO LANÇADOS PARA O SITE RECONHECER O ERRO
 
 # protege rota se nao tiver o token
 def token_requerido(f):
@@ -11,11 +15,15 @@ def token_requerido(f):
         if not auth_header:
             return {"error": "Token ausente"}, 401
         
-        token = auth_header.split(" ")[1] # separa bearer de token
+        try:
+            token = auth_header.split(" ")[1] # separa bearer de token
 
-        payload = verificar_token(token)
+            payload = verificar_token(token)
 
-        if not payload:
+        except jwt.ExpiredSignatureError:
+            return {"error": "Token expirado"}, 401
+
+        except jwt.InvalidTokenError:
             return {"error": "Token inválido"}, 401
         
         return f(*args, **kwargs)
