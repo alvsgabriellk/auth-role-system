@@ -84,8 +84,19 @@ NovoForm.addEventListener("submit", async (e) => {
             categoria: NovaCategoria.value
         });
 
-        if (!resultado.ok) {
+        if (!resultado.sucesso) {
             mostrarAlerta("danger", resultado.msg);
+
+            if (resultado.msg === "Token expirado" ||
+                resultado.msg === "Token inválido") {
+
+                    localStorage.removeItem("token");
+
+                    setTimeout(() => {
+                        window.location.href = "/templates/login.html";
+                    }, 2000);
+                }
+                return;
         }
 
         mostrarAlerta("success", resultado.dados.msg);
