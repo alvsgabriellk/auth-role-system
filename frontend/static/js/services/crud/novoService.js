@@ -1,9 +1,13 @@
 export async function NovoProduto (produto) {
+
     try {
+        const token = localStorage.getItem("token");
+        
         const res = await fetch("http://127.0.0.1:5000/crud/novo-produto", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
             },
             body: JSON.stringify(produto)
         });
