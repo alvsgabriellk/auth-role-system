@@ -63,6 +63,10 @@ form.addEventListener("submit", async (e) => {
             return;
         }
 
+        setTimeout(() => {
+            window.location.href ="/templates/crud.html";
+        }, 2000);
+
     } catch(error) {
         mostrarAlerta("warning", "Erro interno no servidor!");
     }
