@@ -1,3 +1,8 @@
+import { authGuard } from "../../utils/authGuard.js";
+
+//await authGuard(); - apenas token
+await authGuard({ adminRequerido: true });
+
 import { ValidarNome, ValidarDescricao, ValidarPreco, ValidarEstoque, ValidarCategoria } from "../../validators/crudValidator.js";
 import { NovoProduto } from "../../services/crud/novoService.js";
 import { mostrarAlerta } from "../../ui/alerts.js";
