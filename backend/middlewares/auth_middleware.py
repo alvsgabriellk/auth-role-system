@@ -21,10 +21,10 @@ def token_requerido(f):
             payload = verificar_token(token)
 
         except jwt.ExpiredSignatureError:
-            return {"error": "Token expirado"}, 401
+            return {"error": "Sessão expirada. Faça login novamente."}, 401
 
         except jwt.InvalidTokenError:
-            return {"error": "Token inválido"}, 401
+            return {"error": "Sessão inválido"}, 401
         
         return f(*args, **kwargs)
     return decorated
@@ -39,7 +39,7 @@ def admin_requerido(f):
         payload = verificar_token(token)
 
         if payload.get("role") != "admin": # melhor assim que volta none doq ["role"]
-            return {"error": "Acesso negado"}, 403
+            return {"error": "Você não tem permissão para acessar essa página"}, 403
         
         return f(*args, **kwargs)
     return decorated
