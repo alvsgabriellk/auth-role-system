@@ -2,6 +2,12 @@ import { validarEmail, validarSenha } from "../validators/loginValidator.js";
 import { autenticarUsuario } from "../services/authLoginService.js";
 import { mostrarAlerta } from "../ui/alerts.js";
 
+const alerta = sessionStorage.getItem("authAlerta");
+if (alerta) {
+    mostrarAlerta("danger", alerta);
+    sessionStorage.removeItem("authAlerta");
+}
+
 const form = document.querySelector("form");
 
 const email = document.getElementById("email");
