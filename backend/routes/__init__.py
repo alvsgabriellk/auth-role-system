@@ -7,6 +7,7 @@ from .auth import (
     login_routes,
     register_routes,
     email_routes,
+    verificar_routes
 )
 
 from .crud import (
