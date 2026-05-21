@@ -34,5 +34,5 @@ export function mostrarAlerta(tipo, mensagem) {
 
     setTimeout( () => {
         alerta.classList.add("d-none");
-    }, 1500);
+    }, 3000);
 }
